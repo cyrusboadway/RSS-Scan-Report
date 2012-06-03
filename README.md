@@ -1,13 +1,11 @@
-Application Purpose
--------------------
+# Application Purpose
 
 The application, called periodically, will fetch an RSS feed URL and check
 {title, author, description} for matches with a set of regular expressions.
 Upon a match, it will send out notifications (email, and stdout are currently
 supported).
 
-My Purpose
-----------
+# My Purpose
 
 I made this to become more familiar with GitHub, and to brush off the rust
 on my Python (four spaces, wut?). If someone finds this trivial piece of code
@@ -18,30 +16,27 @@ I'll, I intend to use it as a test bed for different storage engines, like
 Amazon DynamoDB, etc. Hence the rediculous over-engineering of what might
 otherwise have been a 20 line script.
 
-Technology
-----------
+# Technology
 
-* cron - this script is not a background service. It must be executed
+- _cron_ - this script is not a background service. It must be executed
          periodically by an external service, like cron.
-* SQLite - to maintain a list of previous matches in order to prevent
+- _SQLite_ - to maintain a list of previous matches in order to prevent
            duplicate emails, a database is maintained in SQLlite. SQLlite
            is under Public Domain.
 
-Required Libraries
-------------------
+# Required Libraries
 
-* html2text - Converts HTML content into Markdown. This is a short-term
+- _html2text_ - Converts HTML content into Markdown. This is a short-term
 			  solution until there's better encapsulation of a 'matched' RSS
 			  item. https://github.com/aaronsw/html2text , licensed
 			  under GLP 3.0
 
-License
--------
+#License
 
-For the time being, this application is licensed as WTFPL
-(https://en.wikipedia.org/wiki/WTFPL). Modify, redistrubute, do as you like.
+For the time being, this application is licensed as
+[WTFPL](https://en.wikipedia.org/wiki/WTFPL). Modify, redistrubute, do as you
+like.
 
-Contact
--------
+#Contact
 
 Cyrus Boadway - cyrus@boadway.ca

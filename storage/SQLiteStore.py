@@ -6,6 +6,7 @@ Created on May 1, 2012
 
 import ConfigParser
 import sqlite3
+import os
 
 class SQLiteStore(object):
     '''
@@ -30,10 +31,7 @@ class SQLiteStore(object):
 
         config.readfp(open(config_file))
 
-        #instantiate the database
-        database_path = config.get("SQLite", "filepath")
-
-        self.conn = sqlite3.connect(database_path)
+        self.conn = sqlite3.connect(os.path.dirname(os.path.realpath(__file__)) + "/rssqlite.db")
 
         self.conn.execute('CREATE TABLE IF NOT EXISTS rssHashes(hash_value TEXT PRIMARY KEY, tstamp TIMESTAMP)')
 

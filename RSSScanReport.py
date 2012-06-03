@@ -16,6 +16,7 @@ framework.
 
 from storage.SQLiteStore import SQLiteStore
 import sys
+import os
 import re
 import ConfigParser
 from rssparsers import feedburner
@@ -148,6 +149,6 @@ class RSSScanReport:
 
 if __name__ == '__main__':
     
-    rsr = RSSScanReport("./RSSScan.conf")
+    rsr = RSSScanReport(os.path.dirname(os.path.realpath(__file__)) + "/RSSScan.conf")
     
     rsr.run()
