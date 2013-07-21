@@ -1,0 +1,3 @@
+*.pyc
+storage/rssqlite.db
+*~

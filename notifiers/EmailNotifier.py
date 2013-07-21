@@ -72,17 +72,24 @@ class SMTPEmailNotifier(object):
 
         mailServer.ehlo()
 
-        if self.smtp_tls:
-            mailServer.starttls()
+        try:
 
-        mailServer.ehlo()
+            if self.smtp_tls:
+                mailServer.starttls()
 
-        mailServer.login(self.smtp_user, self.smtp_password)
+            mailServer.ehlo()
 
-        mailServer.sendmail(self.smtp_user, self.notify_email, msg.as_string())
+            mailServer.login(self.smtp_user, self.smtp_password)
 
-        mailServer.close()
+            mailServer.sendmail(self.smtp_user, self.notify_email, msg.as_string())
 
+            mailServer.close()
+
+        except Error as e:
+            print "SMTP error({0}): {1}".format(e.errno, e.strerror)
+
+        except:
+            print "Failed to send email"
 
     def no_matches(self):
         '''
