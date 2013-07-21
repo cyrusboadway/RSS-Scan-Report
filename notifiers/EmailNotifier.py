@@ -68,7 +68,7 @@ class SMTPEmailNotifier(object):
 
         msg.attach(MIMEText(message, 'html'))
 
-        mailServer = smtplib.SMTP(self.smtp_server, self.smtp_port)
+        mailServer = smtplib.SMTP(self.smtp_server, self.smtp_port, 5)
 
         mailServer.ehlo()
 
